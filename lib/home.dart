@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './forgotpassword.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -10,6 +11,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -17,13 +19,38 @@ class _HomeState extends State<Home> {
       child: ListView(
         children: <Widget>[
           Container(
-              margin: EdgeInsets.only(top: 20),
-              height: MediaQuery.of(context).size.width / 2,
-              child: Image.network(
-                  "https://www.digicert.com/account/images/login-shield.png")),
-          Padding(
-            padding:
-                const EdgeInsets.only(left: 5, right: 16, top: 8, bottom: 8),
+              margin: EdgeInsets.only(top: 80),
+              height: MediaQuery.of(context).size.width / 2.5,
+              child: Image.asset(
+                "assets/images/TCRWA.png",
+              )),
+          Container(
+            margin: EdgeInsets.only(top: 10, bottom: 35),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "TCR",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: width / 16,
+                      fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  "WA",
+                  style: TextStyle(
+                      color: Colors.blue[300],
+                      fontSize: width / 16,
+                      fontWeight: FontWeight.w500),
+                )
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+                left: MediaQuery.of(context).size.width / 12,
+                right: MediaQuery.of(context).size.width / 12,
+                top: 6),
             child: TextField(
               obscureText: false,
               keyboardType: TextInputType.text,
@@ -36,9 +63,12 @@ class _HomeState extends State<Home> {
                   )),
             ),
           ),
-          Padding(
-            padding:
-                const EdgeInsets.only(left: 5, right: 16, top: 8, bottom: 8),
+          Container(
+            margin: EdgeInsets.only(
+                left: MediaQuery.of(context).size.width / 12,
+                right: MediaQuery.of(context).size.width / 12,
+                top: 16,
+                bottom: 20),
             child: TextField(
               obscureText: true,
               keyboardType: TextInputType.text,
@@ -55,51 +85,61 @@ class _HomeState extends State<Home> {
             margin: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width / 12),
             height: MediaQuery.of(context).size.width / 7,
-            color: Colors.blue[300],
+            color: Colors.blue[400],
             child: Center(
               child: Text(
                 "Login",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width / 15),
+                    fontSize: MediaQuery.of(context).size.width / 18),
               ),
             ),
           ),
           Container(
             margin: EdgeInsets.only(top: 20),
             child: Center(
-              child: Text(
-                "Forgot Password?",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width / 25),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ForgotPassord(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Forgot Password?",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: MediaQuery.of(context).size.width / 25),
+                ),
               ),
             ),
           ),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 20,horizontal: 70),
+            margin: EdgeInsets.symmetric(vertical: 20, horizontal: width / 4),
             child: Center(
               child: Row(
                 children: <Widget>[
                   Container(
                     child: Text(
-                      "Didn't have account?",
+                      "Don't have account?",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: MediaQuery.of(context).size.width / 25),
                     ),
                   ),
-                   InkWell(
-                     onTap: (){},
-                     child: Container(
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
                       child: Text(
                         " Signup",
                         style: TextStyle(
                             color: Colors.blue[400],
                             fontSize: MediaQuery.of(context).size.width / 25),
                       ),
+                    ),
                   ),
-                   ),
                 ],
               ),
             ),
